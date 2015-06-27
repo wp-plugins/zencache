@@ -1,15 +1,15 @@
 === ZenCache ===
 
-Stable tag: 150409
-Requires at least: 3.7
-Tested up to: 4.2
+Stable tag: 150626
+Requires at least: 4.1
+Tested up to: 4.3-beta
 Text Domain: zencache
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Contributors: WebSharks, JasWSInc, raamdev
-Donate link: http://www.websharks-inc.com/r/wp-theme-plugin-donation/
+Donate link: http://websharks-inc.com/r/wp-theme-plugin-donation/
 Tags: cache, quick cache, zencache, zen cache, quickcache, speed, performance, fast, loading, generation, execution, benchmark, benchmarking, debug, debugging, caching, cash, caching, cacheing, super cache, advanced cache, advanced-cache, wp-cache, wp cache, rocket, static, client-side cache, rss cache, feed cache, gzip compression, query string, get request, page cache, options panel included, w3c validated code, highly extensible
 
 ZenCache is an advanced WordPress caching plugin inspired by simplicity. Speed up your site (BIG time!) with a reliable and fast WordPress cache.
@@ -328,6 +328,21 @@ Requires PHP v5.3.2+. The latest version of ZenCache is a complete rewrite (OOP 
 
 == Changelog ==
 
+= v150626 =
+
+- **Restructured Codebase**: The entire ZenCache codebase has been restructured to improve performance, enhance flexibility, and make it easier to build in new features!
+- **New Feature!** The free version of ZenCache now supports several new options that were previously only available in the Pro version. You can now toggle the Auto-Clear Cache routines for the Home Page, Posts Page, Author Page, Category Archives, Tag Archives, Custom Term Archives, RSS/RDF/Atom Feeds, and XML Sitemaps. This gives you more control over exactly when ZenCache purges the cache for these parts of your site. See _ZenCache → Plugin Options → Clearing the Cache_ for further details.
+- **New Feature!** URI Exclusion Patterns are now available in ZenCache Lite! This previously Pro-only feature is now available in the free version of ZenCache and allows you to exclude a list of URIs from being cached by ZenCache. See _ZenCache → Plugin Options → URI Exclusion Patterns_ for further details.
+- **New Feature!** HTTP Referrer Exclusion Patterns are now available in ZenCache Lite! This previously Pro-only feature is now available in the free version of ZenCache and allows you to define a list of referring URLs or domains that send you traffic. When ZenCache sees a request coming from one of those URLs or domains, it will not cache that particular request. See _ZenCache → Plugin Options → HTTP Referrer Exclusion Patterns_ for further details.
+- **New Pro Feature!**: HTML Compression now supports compressing JSON (in addition to the already supported HTML, JavaScript, and CSS compression). Props @jaswsinc. See [Issue #469](https://github.com/websharks/zencache/issues/469).
+- **New Pro Feature!**: Static CDN Filters now supports multiple CDN hostnames. This allows you to configure more than one CDN hostname, also referred to as Domain Sharding. This makes it possible for site owners to work around web browser concurrency limits, allowing the browser to download many resources simultaneously, which increases overall speed. Props to @isaumya and @jaswsinc. See [Issue #468](https://github.com/websharks/zencache/issues/468).
+- **Enhancement** (Pro): Static CDN Filters now includes proper support for WordPress Multisite Networks, including support for subdomains (full support for Domain Mapping coming in the next release). If you're running a WordPress Multisite Network and want to configure a CDN, see [this KB Article](http://zencache.com/kb-article/static-cdn-filters-for-wordpress-multisite-networks/) for further details.
+- **Enhancement** (Pro): Static CDN Filters now also apply to any static files that are referenced inside CSS files. Props @jaswsinc. See [Issue #461](https://github.com/websharks/zencache/issues/461).
+- **Enhancement**: Completed a major restructure of the entire codebase to improve modularity and dependency management. Props @jaswsinc.
+- **Enhancement** (Pro): Static CDN Filters now supports the ability to configure separate CDN hostname(s) for each domain (or subdomain) that you run in a WordPress Multisite Network. Props @jaswsinc. See [Issue #475](https://github.com/websharks/zencache/issues/475).
+- **Enhancement** (Pro): Static CDN Filters now support subdomains when ZenCache is running inside a WordPress Multisite Network. Props @jaswsinc. See [Issue #439](https://github.com/websharks/zencache/issues/439).
+- **Bug Fix** (Pro): Static CDN Filters were not being applied to the primary site on WP Multisite installations that used subdomains. Props to @isaumya for discovering this bug. See [Issue #470](https://github.com/websharks/zencache/issues/470).
+
 = v150409 =
 
 - **Enhancement (includes improved CloudFlare support)**: Improvements to IP address detection, including added support for CloudFlare IP forwarding, multiple IPs in a single header, and the ability to customize the lookup order and/or add/remove sources that are searched when looking for the current IP address. It's also possible to revert to the old IP address detection behavior (see [How do I customize remote IP detection?](http://zencache.com/kb-article/how-do-i-customize-ip-address-detection/)). Props @jaswsinc. [Issue #449](https://github.com/websharks/zencache/pull/449)
@@ -419,4 +434,8 @@ ZenCache is an evolution of Quick Cache. It comes with a completely refactored c
 - **Bug Fix (Pro)**: Fixed a bug with the HTML Compressor where `style`, `link` and/or `script` tags could end up out of order in certain scenarios. See [#45](https://github.com/websharks/html-compressor/issues/45).
 - **Bug Fix (Pro)**: Fixed a bug in the HTML Compressor related to JavaScript compression routines. See [#38](https://github.com/websharks/html-compressor/issues/38).
 
+<<<<<<< HEAD:readme.txt
+For older Changelog entries, please see the `CHANGELOG.md` file.
+=======
 For older Changelog entries, please see the `CHANGELOG` file.
+>>>>>>> 000000-dev:zencache-pro/readme.txt
