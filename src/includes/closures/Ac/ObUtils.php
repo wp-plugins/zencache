@@ -140,8 +140,8 @@ $self->maybeStartOutputBuffering = function () use ($self) {
     $self->protocol = $self->isSsl() ? 'https://' : 'http://';
 
     $self->version_salt = ''; // Initialize the version salt.
-    
-    $self->version_salt = $self->applyFilters(GLOBAL_NS.'\\advanced_cache__version_salt', $self->version_salt); // Back compat.
+
+    $self->version_salt = $self->applyFilters(get_class($this).'__version_salt', $self->version_salt);
     $self->version_salt = $self->applyFilters(GLOBAL_NS.'_version_salt', $self->version_salt);
 
     $self->cache_path = $self->buildCachePath($self->protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], '', $self->version_salt);
@@ -284,7 +284,7 @@ $self->outputBufferCallbackHandler = function ($buffer, $phase) use ($self) {
     }
     /* ------- Otherwise, we need to construct & store a new cache file. ----------------------------------------------- */
 
-    
+
 
     if (ZENCACHE_DEBUGGING_ENABLE && $self->isHtmlXmlDoc($cache)) {
         $total_time = number_format(microtime(true) - $self->timer, 5, '.', ''); // Based on the original timer.
